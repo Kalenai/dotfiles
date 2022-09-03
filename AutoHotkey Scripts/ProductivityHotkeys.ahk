@@ -6,6 +6,44 @@ SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it t
 #MaxHotkeysPerInterval 300 ; Specifies the rate of hotkey activations
 #InstallMouseHook ; Forces the unconditional installation of the mouse hook
 
+; ^ => Ctrl
+; ! => Alt
+; + => Shift
+
+; Switch desktop right
+WheelRight::#^Right
+; Switch desktop left
+WheelLeft::#^Left
+
+; Visual Studio
+#If WinActive("ahk_exe devenv.exe")
+    ; Forward
+    XButton1::^-
+    ; Backward
+    XButton2::^+-
+    ; Go to definition
+    F18::F12
+    ; Step over
+    F13::F10
+    ; Step into
+    F15::F11
+    ; Run / Debug Continue
+    F17::F5
+    ; Set breakpoint
+    F20::F9
+#IfWinActive
+
+; Microsoft Teams
+#If WinActive("ahk_exe Teams.exe")
+    ; Override BS hotkeys
+    ^+u::Right
+    ^+c::Right
+    ; Toggle microphone mute
+    F20::^+M
+    ; Toggle camera
+    F21::^+O
+#IfWinActive
+
 ; Blender
 #If WinActive("ahk_exe blender.exe")
     ; Rotate
@@ -128,24 +166,6 @@ SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it t
     F19::!RButton
     ; Focus selected
     F13::f
-#IfWinActive
-
-; Visual Studio
-#If WinActive("ahk_exe devenv.exe")
-    ; Forward
-    XButton1::^-
-    ; Backward
-    XButton2::^+-
-    ; Go to definition
-    F18::F12
-    ; Step over
-    F13::F10
-    ; Step into
-    F15::F11
-    ; Run / Debug Continue
-    F17::F5
-    ; Set breakpoint
-    F20::F9
 #IfWinActive
 
 ; Photoshop
