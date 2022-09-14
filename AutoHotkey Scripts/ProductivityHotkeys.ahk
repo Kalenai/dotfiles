@@ -159,11 +159,31 @@ WheelLeft::#^Left
 ; Unity
 #If WinActive("ahk_exe Unity.exe")
     ; Rotate
-    F14::!LButton
+    F14:: ;!LButton
+        if GetKeyState("Alt")
+            return
+        Send {Alt down}
+        Send {LButton down}
+        return
+    ; Release the Alt
+    F14 Up::
+        Send {Alt up}
+        Send {LButton up}
+        return
     ; Pan
     F16::MButton
     ; Hold zoom
-    F19::!RButton
+    F19:: ;!RButton
+        if GetKeyState("Alt")
+            return
+        Send {Alt down}
+        Send {RButton down}
+        return
+    ; Release the Alt
+    F19 Up::
+        Send {Alt up}
+        Send {RButton up}
+        return
     ; Focus selected
     F13::f
 #IfWinActive
