@@ -44,6 +44,12 @@ WheelLeft::#^Left
     F21::^+O
 #IfWinActive
 
+; Photos
+#IF WinActive("ahk_exe ApplicationFrameHost.exe")
+    ; Pan
+    F16::MButton
+#IfWinActive
+
 ; Blender
 #If WinActive("ahk_exe blender.exe")
     ; Rotate
@@ -255,4 +261,12 @@ WheelLeft::#^Left
         Send {Ctrl up}
         Send {MButton up}
         return
+#IfWinActive
+
+; CHITUBOX
+#If WinActive("ahk_exe CHITUBOX_Basic.exe")
+    ; Rotate
+    F14::RButton
+    ; Pan
+    F16::MButton
 #IfWinActive
